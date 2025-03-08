@@ -8,8 +8,14 @@ import (
 )
 
 func main() {
+	// Open the log file (Accept file name as an argument)
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: go run main.go <log_file>")
+		return
+	}
+
 	// Open the log file
-	file, err := os.Open("logs.txt")
+	file, err := os.Open(os.Args[1])
 	if err != nil {
 		fmt.Println("Error opening file:", err)
 		return
